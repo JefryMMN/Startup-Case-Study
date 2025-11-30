@@ -22,7 +22,7 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/video1.mp4" type="video/mp4" />
+        <source src="https://raw.githubusercontent.com/JefryMMN/Startup-Case-Study/main/public/assets/video1.mp4" type="video/mp4" />
       </video>
 
       {/* Dark Overlay for better text readability */}
