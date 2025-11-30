@@ -17,9 +17,18 @@ export default function About({ onBack }: AboutProps) {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-40"
+          poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Crect fill='%232C2A26' width='1920' height='1080'/%3E%3C/svg%3E"
         >
-        <source src="https://raw.githubusercontent.com/JefryMMN/Startup-Case-Study/main/public/assets/video2.mp4" type="video/mp4" />
+          <source src="https://github.com/YOUR-USERNAME/YOUR-REPO/releases/download/v1.0.0/video1.mp4" type="video/mp4" />
         </video>
+
+        {/* Fallback if video doesn't load */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
 
         {/* Dark Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40"></div>
@@ -42,9 +51,6 @@ export default function About({ onBack }: AboutProps) {
             Back to Home
           </button>
         </div>
-
-        {/* Decorative Element */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F5F2EB] to-transparent"></div>
       </section>
 
       {/* Content Sections */}
