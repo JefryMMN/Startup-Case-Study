@@ -307,7 +307,7 @@ Bankman-Fried was arrested in the Bahamas and extradited to the US. In November 
             </h2>
             <button
               onClick={handleBack}
-              className="flex items-center text-[#5D5A53] uppercase tracking-widest text-xs hover:text-[#2C2A26] transition-all duration-300 mt-2"
+              className="flex items-center text-[#5D5A53] uppercase tracking-widest text-sm font-medium hover:text-[#2C2A26] transition-all duration-300 mt-4"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -315,7 +315,7 @@ Bankman-Fried was arrested in the Bahamas and extradited to the US. In November 
                 viewBox="0 0 24 24"
                 strokeWidth="2"
                 stroke="currentColor"
-                className="w-3 h-3 mr-2"
+                className="w-4 h-4 mr-2"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>

@@ -10,11 +10,12 @@ import ProductGrid from './components/ProductGrid';
 import Journal from './components/Journal';
 import Footer from './components/Footer';
 import ProductDetail from './components/ProductDetail';
-import JournalDetail from './components/JournalDetail'; // ✅ Added
+import JournalDetail from './components/JournalDetail';
 import { ViewState } from './types';
 
 function App() {
   const [view, setView] = useState<ViewState>({ type: 'home' });
+  const [fromTrending, setFromTrending] = useState(false);
 
   // ✅ Handle navigation
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -43,9 +44,11 @@ function App() {
   return (
     <div className="min-h-screen bg-[#F5F2EB] font-sans text-[#2C2A26] selection:bg-[#D6D1C7] selection:text-[#2C2A26]">
       {/* Navbar */}
-      <div className="print:hidden">
-        <Navbar onNavClick={handleNavClick} />
-      </div>
+      {view.type === 'home' && (
+        <div className="print:hidden">
+          <Navbar onNavClick={handleNavClick} />
+        </div>
+      )}
 
       {/* Main content */}
       <main>
@@ -55,6 +58,7 @@ function App() {
             <Hero onNavClick={handleNavClick} />
             <ProductGrid
               onProductClick={(study) => {
+                setFromTrending(false);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 setView({ type: 'case-study', study: study });
               }}
@@ -63,37 +67,41 @@ function App() {
         )}
 
         {/* 📰 Trending Section */}
-{view.type === 'trending' && (
-  <Journal
-    onArticleClick={(study) => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setView({ type: 'case-study', study }); // ✅ no crash now
-    }}
-    onBack={() => setView({ type: 'home' })}
-  />
-)}
-
-
-
-
+        {view.type === 'trending' && (
+          <Journal
+            onArticleClick={(study) => {
+              setFromTrending(true);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setView({ type: 'case-study', study });
+            }}
+            onBack={() => setView({ type: 'home' })}
+          />
+        )}
 
         {/* 📘 Case Study Detail */}
-     {view.type === 'case-study' && (
-  <ProductDetail
-    study={view.study as any} // ✅ add this `as any` if TypeScript still warns
-    onBack={() => setView({ type: 'trending' })} // back goes to trending
-  />
-)}
-
-
-        {/* 🧾 Journal Detail (for Trending Articles) */}
-     
+        {view.type === 'case-study' && (
+          <ProductDetail
+            study={view.study as any}
+            onBack={() => {
+              if (fromTrending) {
+                setView({ type: 'trending' });
+              } else {
+                setView({ type: 'home' });
+              }
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }, 100);
+            }}
+          />
+        )}
       </main>
 
       {/* Footer */}
-      <div className="print:hidden">
-        <Footer onLinkClick={handleNavClick} />
-      </div>
+      {view.type === 'home' && (
+        <div className="print:hidden">
+          <Footer onNavClick={handleNavClick} />
+        </div>
+      )}
     </div>
   );
 }
