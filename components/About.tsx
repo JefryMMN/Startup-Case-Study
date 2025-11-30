@@ -18,7 +18,7 @@ export default function About({ onBack }: AboutProps) {
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-40"
         >
-          <source src="/video1.mp4" type="video/mp4" />
+        <source src="https://raw.githubusercontent.com/JefryMMN/Startup-Case-Study/main/public/assets/video2.mp4" type="video/mp4" />
         </video>
 
         {/* Dark Overlay for better text readability */}
