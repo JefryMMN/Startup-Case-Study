@@ -1,4 +1,3 @@
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -15,19 +14,24 @@ const Hero: React.FC<HeroProps> = ({ onNavClick }) => {
   return (
     <section className="relative w-full h-[70vh] min-h-[600px] overflow-hidden bg-[#2C2A26]">
       
-      {/* Background Image - Corporate/Building abstract */}
-      <div className="absolute inset-0 w-full h-full">
-        <img 
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
-            alt="Glass building architecture" 
-            className="w-full h-full object-cover grayscale contrast-[1.1] brightness-[0.4]"
-        />
-        <div className="absolute inset-0 bg-[#2C2A26]/60 mix-blend-multiply"></div>
-      </div>
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/video1.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark Overlay for better text readability */}
+      <div className="absolute inset-0 bg-[#2C2A26]/70"></div>
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
         <div className="animate-fade-in-up w-full max-w-4xl">
+          
           <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif font-normal text-[#F5F2EB] tracking-tight mb-8 drop-shadow-lg leading-none">
             When Giants <br/> <span className="italic text-[#A8A29E] font-light">Fall</span>
           </h1>

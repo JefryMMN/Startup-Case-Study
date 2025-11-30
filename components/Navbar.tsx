@@ -1,4 +1,3 @@
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -57,6 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
           <div className={`hidden md:flex items-center gap-12 text-sm font-medium tracking-widest uppercase transition-colors duration-500 ${textColorClass}`}>
             <a href="#" onClick={(e) => handleLinkClick(e, '')} className="hover:opacity-60 transition-opacity">Home</a>
             <a href="#trending" onClick={(e) => handleLinkClick(e, 'trending')} className="hover:opacity-60 transition-opacity">Trending Startups</a>
+            <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className="hover:opacity-60 transition-opacity">About</a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -86,6 +86,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
           <div className="flex flex-col items-center space-y-8 text-xl font-serif font-medium text-[#2C2A26]">
             <a href="#" onClick={(e) => handleLinkClick(e, '')} className="hover:opacity-60 transition-opacity">Home</a>
             <a href="#trending" onClick={(e) => handleLinkClick(e, 'trending')} className="hover:opacity-60 transition-opacity">Trending Startups</a>
+            <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className="hover:opacity-60 transition-opacity">About</a>
           </div>
       </div>
     </>

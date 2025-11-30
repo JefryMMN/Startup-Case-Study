@@ -10,7 +10,7 @@ import ProductGrid from './components/ProductGrid';
 import Journal from './components/Journal';
 import Footer from './components/Footer';
 import ProductDetail from './components/ProductDetail';
-import JournalDetail from './components/JournalDetail';
+import About from './components/About';
 import { ViewState } from './types';
 
 function App() {
@@ -27,10 +27,16 @@ function App() {
       return;
     }
 
+    if (targetId === 'about') {
+      setView({ type: 'about' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     // Default: go back to home for other links
     setView({ type: 'home' });
     setTimeout(() => {
-      if (targetId && targetId !== 'trending') {
+      if (targetId && targetId !== 'trending' && targetId !== 'about') {
         const element = document.getElementById(targetId);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
@@ -75,6 +81,16 @@ function App() {
               setView({ type: 'case-study', study });
             }}
             onBack={() => setView({ type: 'home' })}
+          />
+        )}
+
+        {/* ℹ️ About Page */}
+        {view.type === 'about' && (
+          <About
+            onBack={() => {
+              setView({ type: 'home' });
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           />
         )}
 

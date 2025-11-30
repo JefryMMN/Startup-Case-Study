@@ -46,8 +46,8 @@ export interface JournalArticle {
 }
 
 /** 🌍 App View States */
-/** 🌍 App View States */
 export type ViewState =
   | { type: 'home' }
   | { type: 'trending' }
-  | { type: 'case-study'; study: Partial<StartupCaseStudy> }; // ✅ Allow partial data
+  | { type: 'about' }
+  | { type: 'case-study'; study: Partial<StartupCaseStudy> };
