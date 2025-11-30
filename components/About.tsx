@@ -19,8 +19,7 @@ export default function About({ onBack }: AboutProps) {
           className="absolute inset-0 w-full h-full object-cover opacity-40"
           poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Crect fill='%232C2A26' width='1920' height='1080'/%3E%3C/svg%3E"
         >
-          <source src="https://github.com/YOUR-USERNAME/YOUR-REPO/releases/download/v1.0.0/video1.mp4" type="video/mp4" />
-        </video>
+<source src="https://raw.githubusercontent.com/JefryMMN/Startup-Case-Study/main/public/assets/video2.mp4" type="video/mp4" />        </video>
 
         {/* Fallback if video doesn't load */}
         <div className="absolute inset-0 opacity-5">
