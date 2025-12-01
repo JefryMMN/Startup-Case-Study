@@ -86,48 +86,57 @@ export default function About({ onBack }: AboutProps) {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-white p-10 border border-[#D6D1C7] hover:shadow-lg transition-shadow duration-300">
-              <div className="w-12 h-12 bg-[#2C2A26] rounded-full flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-[#F5F2EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+            <div className="group relative bg-[#2C2A26] p-12 hover:bg-[#3D3A36] transition-all duration-500 overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#F5F2EB] opacity-5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="relative">
+                <div className="w-16 h-16 border-2 border-[#F5F2EB] flex items-center justify-center mb-8">
+                  <svg className="w-8 h-8 text-[#F5F2EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-serif font-light mb-5 text-[#F5F2EB]">
+                  Comprehensive Case Studies
+                </h3>
+                <p className="text-[#D6D1C7] leading-relaxed text-base">
+                  In-depth analyses of startup failures across industries, examining root causes, key decisions, and critical turning points.
+                </p>
               </div>
-              <h3 className="text-2xl font-serif font-light mb-4 text-[#2C2A26]">
-                Comprehensive Case Studies
-              </h3>
-              <p className="text-[#44403C] leading-relaxed">
-                In-depth analyses of startup failures across industries, examining root causes, key decisions, and critical turning points.
-              </p>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white p-10 border border-[#D6D1C7] hover:shadow-lg transition-shadow duration-300">
-              <div className="w-12 h-12 bg-[#2C2A26] rounded-full flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-[#F5F2EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
+            <div className="group relative bg-[#2C2A26] p-12 hover:bg-[#3D3A36] transition-all duration-500 overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#F5F2EB] opacity-5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="relative">
+                <div className="w-16 h-16 border-2 border-[#F5F2EB] flex items-center justify-center mb-8">
+                  <svg className="w-8 h-8 text-[#F5F2EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-serif font-light mb-5 text-[#F5F2EB]">
+                  Pattern Recognition
+                </h3>
+                <p className="text-[#D6D1C7] leading-relaxed text-base">
+                  We identify recurring patterns and common pitfalls that lead to failure, helping you spot red flags before they become fatal.
+                </p>
               </div>
-              <h3 className="text-2xl font-serif font-light mb-4 text-[#2C2A26]">
-                Pattern Recognition
-              </h3>
-              <p className="text-[#44403C] leading-relaxed">
-                We identify recurring patterns and common pitfalls that lead to failure, helping you spot red flags before they become fatal.
-              </p>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white p-10 border border-[#D6D1C7] hover:shadow-lg transition-shadow duration-300">
-              <div className="w-12 h-12 bg-[#2C2A26] rounded-full flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-[#F5F2EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+            <div className="group relative bg-[#2C2A26] p-12 hover:bg-[#3D3A36] transition-all duration-500 overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#F5F2EB] opacity-5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="relative">
+                <div className="w-16 h-16 border-2 border-[#F5F2EB] flex items-center justify-center mb-8">
+                  <svg className="w-8 h-8 text-[#F5F2EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-serif font-light mb-5 text-[#F5F2EB]">
+                  Community Learning
+                </h3>
+                <p className="text-[#D6D1C7] leading-relaxed text-base">
+                  A transparent platform where entrepreneurs share failure stories openly, fostering a culture of learning and resilience.
+                </p>
               </div>
-              <h3 className="text-2xl font-serif font-light mb-4 text-[#2C2A26]">
-                Community Learning
-              </h3>
-              <p className="text-[#44403C] leading-relaxed">
-                A transparent platform where entrepreneurs share failure stories openly, fostering a culture of learning and resilience.
-              </p>
             </div>
           </div>
         </section>

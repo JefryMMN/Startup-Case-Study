@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 
-
 import React, { useState, useEffect } from 'react';
 import { BRAND_NAME } from '../constants';
 
@@ -57,6 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
             <a href="#" onClick={(e) => handleLinkClick(e, '')} className="hover:opacity-60 transition-opacity">Home</a>
             <a href="#trending" onClick={(e) => handleLinkClick(e, 'trending')} className="hover:opacity-60 transition-opacity">Trending Startups</a>
             <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className="hover:opacity-60 transition-opacity">About</a>
+            <a href="#authors" onClick={(e) => handleLinkClick(e, 'authors')} className="hover:opacity-60 transition-opacity">Authors</a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -87,6 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick }) => {
             <a href="#" onClick={(e) => handleLinkClick(e, '')} className="hover:opacity-60 transition-opacity">Home</a>
             <a href="#trending" onClick={(e) => handleLinkClick(e, 'trending')} className="hover:opacity-60 transition-opacity">Trending Startups</a>
             <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className="hover:opacity-60 transition-opacity">About</a>
+            <a href="#authors" onClick={(e) => handleLinkClick(e, 'authors')} className="hover:opacity-60 transition-opacity">Authors</a>
           </div>
       </div>
     </>

@@ -50,4 +50,5 @@ export type ViewState =
   | { type: 'home' }
   | { type: 'trending' }
   | { type: 'about' }
+  | { type: 'authors' }
   | { type: 'case-study'; study: Partial<StartupCaseStudy> };
