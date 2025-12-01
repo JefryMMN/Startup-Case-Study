@@ -21,7 +21,7 @@ const AUTHORS_DATA: Author[] = [
   {
     name: 'Jefry Mammen',
     title: 'Founder & Lead Researcher',
-     bio: 'The work behind this platform focuses on decoding the true reasons startups fail. Through in-depth research, data analysis, and founder-based insights, complex failure patterns are translated into useful guidance. A background in product development and early-stage strategy adds practical clarity to understanding what causes companies to break down.',
+    bio: 'The work behind this platform focuses on decoding the true reasons startups fail. Through in-depth research, data analysis, and founder-based insights, complex failure patterns are translated into useful guidance. A background in product development and early-stage strategy adds practical clarity to understanding what causes companies to break down.',
     imageSrc: '/assets/jefry-mammen.jpg',
     social: {
       linkedin: 'https://www.linkedin.com/in/jefry-mammen-305a74291?utm_source=share_via&utm_content=profile&utm_medium=member_android',
@@ -120,7 +120,15 @@ export default function Authors({ onBack }: AuthorsProps) {
               className={`grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 items-start ${index % 2 !== 0 ? 'lg:grid-flow-col-dense' : ''}`}
             >
               {/* Image Column */}
-             
+              <div className={`lg:col-span-1 ${index % 2 !== 0 ? 'lg:col-start-3' : ''}`}>
+                <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#D6D1C7]">
+                  <img
+                    src={author.imageSrc}
+                    alt={author.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
 
               {/* Text/Bio Column */}
               <div className={`lg:col-span-2 ${index % 2 !== 0 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
