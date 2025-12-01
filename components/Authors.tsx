@@ -20,12 +20,12 @@ interface Author {
 const AUTHORS_DATA: Author[] = [
   {
     name: 'Jefry Mammen',
-    title: 'Founder & Lead Researcher',
+    title: 'Product Manager and Lead Researcher',
     bio: 'The work behind this platform focuses on decoding the true reasons startups fail. Through in-depth research, data analysis, and founder-based insights, complex failure patterns are translated into useful guidance. A background in product development and early-stage strategy adds practical clarity to understanding what causes companies to break down.',
     imageSrc: '/assets/jefry-mammen.jpg',
     social: {
       linkedin: 'https://www.linkedin.com/in/jefry-mammen-305a74291?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-      twitter: '#',
+      twitter: 'https://x.com/JefryMamme77531?t=6lucXDlXuiUgBfsKmhFJkw&s=09',
     },
   },
   {
@@ -35,7 +35,7 @@ const AUTHORS_DATA: Author[] = [
     imageSrc: '/assets/aaron-k.jpg',
     social: {
       linkedin: 'https://www.linkedin.com/in/aaron-ros?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-      website: '#',
+      twitter: 'https://x.com/aaronk11161?s=11',
     },
   },
 ];
@@ -107,7 +107,7 @@ export default function Authors({ onBack }: AuthorsProps) {
             The Core Team
           </h2>
           <p className="text-lg sm:text-xl text-[#44403C] leading-relaxed px-4">
-            At {BRAND_NAME}, our content is built on rigorous analysis. We believe that **unbiased, deep-dive research** is the only way to extract truly valuable lessons from the ashes of failure.
+            At {BRAND_NAME}, our content is built on rigorous analysis. We believe that unbiased, deep-dive research** is the only way to extract truly valuable lessons from the ashes of failure.
           </p>
           <div className="w-20 h-1 bg-[#2C2A26] mx-auto mt-6 sm:mt-8"></div>
         </section>

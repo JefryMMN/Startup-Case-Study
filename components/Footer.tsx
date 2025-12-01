@@ -3,8 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import { ref, runTransaction, onValue } from "firebase/database";
+import { db } from "../services/firebase";
 
 interface FooterProps {
   onNavClick: (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => void;
@@ -12,66 +14,51 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
   const [email, setEmail] = useState('');
-  const [subscribeStatus, setSubscribeStatus] = useState<
-    'idle' | 'loading' | 'success' | 'error'
-  >('idle');
+  const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
 
-  const validateEmail = (email: string): boolean => {
-    // RFC 5322 compliant email validation regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  // ✅ Email validation
+  const validateEmail = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+  // ✅ Newsletter subscription (EmailJS)
   const handleSubscribe = async () => {
-    // Reset error message
     setErrorMessage('');
 
-    // Check if email is empty
     if (!email.trim()) {
       setErrorMessage('Please enter your email address');
       setSubscribeStatus('error');
       return;
     }
 
-    // Validate email format
     if (!validateEmail(email)) {
       setErrorMessage('Please enter a valid email address');
       setSubscribeStatus('error');
       return;
     }
 
-    // Send welcome email via EmailJS
     setSubscribeStatus('loading');
     
     try {
-      // EmailJS credentials
       const serviceID = 'service_3qk93fe';
       const templateID = 'template_q4huzdb';
       const publicKey = '29U7aPzs0dsrS6dRy';
 
       const templateParams = {
         to_email: email,
-        to_name: email.split('@')[0], // Uses part before @ as name
+        to_name: email.split('@')[0],
         from_name: 'Startup Archive',
       };
 
-      await emailjs.send(
-        serviceID,
-        templateID,
-        templateParams,
-        publicKey
-      );
-
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
       setSubscribeStatus('success');
-      
-      // Reset form after 3 seconds
+
       setTimeout(() => {
         setEmail('');
         setSubscribeStatus('idle');
         setErrorMessage('');
       }, 3000);
-      
+
     } catch (error) {
       console.error('EmailJS Error:', error);
       setErrorMessage('Failed to subscribe. Please try again later.');
@@ -82,6 +69,28 @@ const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleSubscribe();
   };
+
+  // ✅ Real-time Firebase Visitor Counter
+  useEffect(() => {
+    const visitorRef = ref(db, 'visitorCount');
+
+    // Increment count only once per browser
+    const hasVisited = localStorage.getItem('startup_archive_visited');
+    if (!hasVisited) {
+      runTransaction(visitorRef, (currentValue) => {
+        return (currentValue || 0) + 1;
+      });
+      localStorage.setItem('startup_archive_visited', 'true');
+    }
+
+    // Listen for live visitor updates
+    const unsubscribe = onValue(visitorRef, (snapshot) => {
+      const count = snapshot.val();
+      if (count !== null) setVisitorCount(count);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <footer className="bg-[#44403C] text-[#F5F2EB]">
@@ -142,14 +151,10 @@ const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
                 </button>
               </div>
               
-              {/* Error Message */}
               {subscribeStatus === 'error' && errorMessage && (
-                <p className="text-red-400 text-sm mt-2 font-light">
-                  {errorMessage}
-                </p>
+                <p className="text-red-400 text-sm mt-2 font-light">{errorMessage}</p>
               )}
               
-              {/* Success Message */}
               {subscribeStatus === 'success' && (
                 <p className="text-green-400 text-sm mt-2 font-light">
                   Thank you for subscribing! Check your email for confirmation.
@@ -160,65 +165,37 @@ const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
 
           {/* Navigation */}
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
-
-            {/* Company */}
             <div>
               <h4 className="text-sm font-bold uppercase tracking-widest text-[#A8A29E] mb-6">
                 Company
               </h4>
-
               <ul className="space-y-4">
                 <li>
-                  <a
-                    href="#about"
-                    onClick={(e) => onNavClick(e, 'about')}
-                    className="text-[#F5F2EB] hover:text-white transition-colors text-base"
-                  >
-                    About
-                  </a>
+                  <a href="#about" onClick={(e) => onNavClick(e, 'about')}
+                    className="text-[#F5F2EB] hover:text-white transition-colors text-base">About</a>
                 </li>
-
                 <li>
-                  <a
-                    href="#authors"
-                    onClick={(e) => onNavClick(e, 'authors')}
-                    className="text-[#F5F2EB] hover:text-white transition-colors text-base"
-                  >
-                    Our Authors
-                  </a>
+                  <a href="#authors" onClick={(e) => onNavClick(e, 'authors')}
+                    className="text-[#F5F2EB] hover:text-white transition-colors text-base">Our Authors</a>
                 </li>
               </ul>
             </div>
 
-            {/* Explore */}
             <div>
               <h4 className="text-sm font-bold uppercase tracking-widest text-[#A8A29E] mb-6">
                 Explore
               </h4>
-
               <ul className="space-y-4">
                 <li>
-                  <a
-                    href="#case-studies"
-                    onClick={(e) => onNavClick(e, 'case-studies')}
-                    className="text-[#F5F2EB] hover:text-white transition-colors text-base"
-                  >
-                    All Case Studies
-                  </a>
+                  <a href="#case-studies" onClick={(e) => onNavClick(e, 'case-studies')}
+                    className="text-[#F5F2EB] hover:text-white transition-colors text-base">All Case Studies</a>
                 </li>
-
                 <li>
-                  <a
-                    href="#trending"
-                    onClick={(e) => onNavClick(e, 'trending')}
-                    className="text-[#F5F2EB] hover:text-white transition-colors text-base"
-                  >
-                    Trending Failures
-                  </a>
+                  <a href="#trending" onClick={(e) => onNavClick(e, 'trending')}
+                    className="text-[#F5F2EB] hover:text-white transition-colors text-base">Trending Failures</a>
                 </li>
               </ul>
             </div>
-
           </div>
         </div>
       </div>
@@ -227,23 +204,14 @@ const Footer: React.FC<FooterProps> = ({ onNavClick }) => {
       <div className="border-t border-[#5D5A53]">
         <div className="max-w-[1800px] mx-auto px-6 md:px-12 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-
             <p className="text-sm text-[#A8A29E]">
               © 2025 Startup Archive. All rights reserved.
+              {visitorCount === null ? (
+                <span className="ml-2 animate-pulse text-[#A8A29E]">• loading visitors...</span>
+              ) : (
+                <span className="ml-2">• {visitorCount.toLocaleString()} visitors</span>
+              )}
             </p>
-
-            <div className="flex items-center gap-8 text-sm">
-              <a className="text-[#A8A29E] hover:text-[#F5F2EB] transition-colors" href="#">
-                Terms
-              </a>
-              <a className="text-[#A8A29E] hover:text-[#F5F2EB] transition-colors" href="#">
-                Privacy
-              </a>
-              <a className="text-[#A8A29E] hover:text-[#F5F2EB] transition-colors" href="#">
-                Cookie Preferences
-              </a>
-            </div>
-
           </div>
         </div>
       </div>

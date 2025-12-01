@@ -144,11 +144,12 @@ function App() {
       </main>
 
       {/* Footer - Render on all primary views */}
-      {(view.type === 'home' || view.type === 'trending' || view.type === 'about' || view.type === 'authors') && (
-        <div className="print:hidden">
-          <Footer onNavClick={handleNavClick} />
-        </div>
-      )}
+    {/* Footer - Render on all primary views */}
+      {(view.type === 'home' || view.type === 'trending' || view.type === 'about' || view.type === 'authors' || view.type === 'case-study') && (
+        <div className="print:hidden">
+          <Footer onNavClick={handleNavClick} />
+        </div>
+      )}
     </div>
   );
 }
