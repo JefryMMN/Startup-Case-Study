@@ -120,15 +120,7 @@ export default function Authors({ onBack }: AuthorsProps) {
               className={`grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 items-start ${index % 2 !== 0 ? 'lg:grid-flow-col-dense' : ''}`}
             >
               {/* Image Column */}
-              <div className={`lg:col-span-1 ${index % 2 !== 0 ? 'lg:col-start-3' : ''}`}>
-                <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#D6D1C7]">
-                  <img
-                    src={author.imageSrc}
-                    alt={author.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+              
 
               {/* Text/Bio Column */}
               <div className={`lg:col-span-2 ${index % 2 !== 0 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
