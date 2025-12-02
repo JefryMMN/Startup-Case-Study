@@ -27,17 +27,7 @@ const AUTHORS_DATA: Author[] = [
       linkedin: 'https://www.linkedin.com/in/jefry-mammen-305a74291?utm_source=share_via&utm_content=profile&utm_medium=member_android',
       twitter: 'https://x.com/JefryMamme77531?t=6lucXDlXuiUgBfsKmhFJkw&s=09',
     },
-  },
-  {
-    name: 'Aaron K.',
-    title: 'Chief Data Analyst',
-    bio: "With a specialization in statistical modeling and data visualization, Aaron's role is to identify the recurring patterns and correlations across hundreds of failed ventures. He transforms anecdotal evidence into concrete, data-driven insights, ensuring that the platform's lessons are scientifically grounded and universally applicable.",
-    imageSrc: '/assets/aaron-k.jpg',
-    social: {
-      linkedin: 'https://www.linkedin.com/in/aaron-ros?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-      twitter: 'https://x.com/aaronk11161?s=11',
-    },
-  },
+  }
 ];
 
 const SocialIcon: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
